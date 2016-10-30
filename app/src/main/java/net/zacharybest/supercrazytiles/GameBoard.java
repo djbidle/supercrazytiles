@@ -62,6 +62,7 @@ public class GameBoard extends Activity {
         playerButtons = new ArrayList<Button>();
         addBoardToArray(playerButtons, "player_board");
 
+        //FIXME sqrt will not work with rectangles
         boardWidth = (int) Math.sqrt((double) playerButtons.size());
 
         setButtonSize(computerButtons);
