@@ -133,15 +133,20 @@ public class GameBoard extends AppCompatActivity {
         int bottomIndex = buttonIndex + boardRowLength;
 
         toggleButton(button);
+
+        // if a button exists to the left of the button that was clicked
         if (buttonIndex % boardRowLength > 0) {
             toggleButton(board.get(leftIndex));
         }
+        // if a button exists to the right of the button that was clicked
         if ((buttonIndex % boardRowLength) < boardRowLength - 1) {
             toggleButton(board.get(rightIndex));
         }
+        // if a button exists above the button that was clicked
         if (topIndex >= 0) {
             toggleButton(board.get(topIndex));
         }
+        // if a button exists below the button that was clicked
         if (bottomIndex < board.size()) {
             toggleButton(board.get(bottomIndex));
         }
