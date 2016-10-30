@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Super Crazy Tiles</string>
+    <string name="computer_tiles">Computer Tiles</string>
+    <string name="player_tiles">Your Tiles</string>
 </resources>

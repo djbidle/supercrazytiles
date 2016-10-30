@@ -10,6 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.zacharybest.supercrazytiles.GameBoard">
 
+    <TextView
+        android:text="@string/computer_tiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
     <GridLayout
         android:id="@+id/computer_board"
         android:layout_width="wrap_content"
@@ -17,6 +23,7 @@
         android:layout_marginBottom="10pt"
         android:columnCount="4"
         android:layout_gravity="center">
+
         <Button
             android:layout_width="48dp"
             android:layout_height="48dp"
@@ -83,6 +90,12 @@
             android:layout_margin="1dp" />
 
     </GridLayout>
+
+    <TextView
+        android:text="@string/player_tiles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
     <GridLayout
         android:id="@+id/player_board"
