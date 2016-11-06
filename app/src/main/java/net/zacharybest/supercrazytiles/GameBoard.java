@@ -8,10 +8,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import static net.zacharybest.supercrazytiles.R.id.diffLevel;
 
 /**
  * This activity is the game.
@@ -25,8 +30,13 @@ public class GameBoard extends Activity {
     private int difficulty = 0;
     private int turn = difficulty;
 
-    int activeColor = 0xFF00FF00; //green
-    int inactiveColor = 0xFF0000FF; //blue
+    int activeColor = 0xFF388E3C; //green
+    int inactiveColor = 0xFF1A237E; //blue
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +75,17 @@ public class GameBoard extends Activity {
         //FIXME sqrt will not work with rectangles
         boardWidth = (int) Math.sqrt((double) playerButtons.size());
 
+        /**
+         * The only way to set button size dynamically with
+         * GridLayout is to use columnWeight/rowWeight attributes.
+         * TableLayout didn't work because addBoardToArray was not
+         * getting all the buttons. Did not want to mess with that code.
+         **/
         setButtonSize(computerButtons);
         setButtonSize(playerButtons);
 
         newGame();
+
     }
 
     /**
@@ -99,7 +116,10 @@ public class GameBoard extends Activity {
     private void increaseDifficult() {
         difficulty++;
         turn = difficulty;
-        Toast.makeText(this, "Difficulty set to " + difficulty, Toast.LENGTH_SHORT).show();
+
+        TextView tv = (TextView) findViewById(diffLevel);
+        tv.setText(String.valueOf(difficulty));
+        //Toast.makeText(this, "Difficulty set to " + difficulty, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -212,13 +232,14 @@ public class GameBoard extends Activity {
         button.setBackgroundColor(color);
     }
 
-    private void setButtonSize(ArrayList<Button> buttons){
-        for (Button button : buttons){
+    private void setButtonSize(ArrayList<Button> buttons) {
+        for (Button button : buttons) {
             GridLayout.LayoutParams params = (GridLayout.LayoutParams) button.getLayoutParams();
-            params.width = (getResources().getDisplayMetrics().widthPixels/(boardWidth + 1));
-            params.height = (getResources().getDisplayMetrics().heightPixels/((boardHeight *2) + 2));
+            params.width = (getResources().getDisplayMetrics().widthPixels / (boardWidth + 1));
+            params.height = (getResources().getDisplayMetrics().heightPixels / ((boardHeight * 2) + 2));
             button.setLayoutParams(params);
         }
 
     }
+
 }
