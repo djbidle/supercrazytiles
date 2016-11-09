@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import static android.R.attr.configure;
+import static android.R.attr.width;
+
 /**
- * Created by dj on 10/29/16.
+ * Provides a means to launch the selected game board dimensions
  */
 
 public class StartPage extends AppCompatActivity {
@@ -17,25 +20,32 @@ public class StartPage extends AppCompatActivity {
         setContentView(R.layout.activity_start_page);
     }
 
-    public void startGame(View view){
+    public void start4x4Game(View view) {
         Intent intent = new Intent(this, GameBoard.class);
-        Bundle bundle = new Bundle();
-
-        if (view.getId() == R.id.start_game_4x4) {
-            bundle.putInt("Key", view.getId());
-        }
-
-        if (view.getId() == R.id.start_game_4x5) {
-            bundle.putInt("Key", view.getId());
-        }
-
-        if (view.getId() == R.id.start_game_5x5) {
-            bundle.putInt("Key", view.getId());
-        }
-
+        Bundle bundle = createBundle(R.layout.activity_game_board, 4, 4);
         intent.putExtras(bundle);
         startActivity(intent);
-
     }
 
+    public void start4x5Game(View view) {
+        Intent intent = new Intent(this, GameBoard.class);
+        Bundle bundle = createBundle(R.layout.activity_game_board_4x5, 4, 5);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void start5x5Game(View view) {
+        Intent intent = new Intent(this, GameBoard.class);
+        Bundle bundle = createBundle(R.layout.activity_game_board_5x5, 5, 5);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private Bundle createBundle(int boardId, int width, int height){
+        Bundle bundle = new Bundle();
+        bundle.putInt("boardId", boardId);
+        bundle.putInt("width", width);
+        bundle.putInt("height", height);
+        return bundle;
+    }
 }

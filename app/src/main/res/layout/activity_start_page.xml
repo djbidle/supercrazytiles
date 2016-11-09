@@ -7,29 +7,28 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:gravity="center"
             android:orientation="vertical">
 
             <Button
                 android:text="Start Game - 4x4 Board"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/start_game_4x4"
-                android:onClick="startGame" />
+                android:onClick="start4x4Game" />
 
             <Button
                 android:text="Start Game - 4x5 Board"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/start_game_4x5"
-                android:onClick="startGame" />
+                android:onClick="start4x5Game" />
 
             <Button
                 android:text="Start Game - 5x5 Board"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/start_game_5x5"
-                android:onClick="startGame" />
+                android:onClick="start5x5Game" />
 
         </LinearLayout>
 

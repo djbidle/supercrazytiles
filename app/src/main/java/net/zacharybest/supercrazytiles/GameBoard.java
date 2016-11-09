@@ -11,12 +11,12 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import static net.zacharybest.supercrazytiles.R.id.diffLevel;
+import static android.R.attr.id;
+
 
 /**
  * This activity is the game.
@@ -29,14 +29,11 @@ public class GameBoard extends Activity {
     private int boardHeight;
     private int difficulty = 0;
     private int turn = difficulty;
+    private int gamesPlayed = 0;
+    private int gamesWon = 0;
 
-    int activeColor = 0xFF388E3C; //green
-    int inactiveColor = 0xFF1A237E; //blue
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
+    private final int activeColor = 0xFF388E3C; //green
+    private final int inactiveColor = 0xFF1A237E; //blue
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,31 +46,15 @@ public class GameBoard extends Activity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Bundle bundle = getIntent().getExtras();
-        int id = bundle.getInt("Key");
-
-        if (id == R.id.start_game_4x4) {
-            setContentView(R.layout.activity_game_board);
-            boardHeight = 4;
-        }
-
-        if (id == R.id.start_game_4x5) {
-            setContentView(R.layout.activity_game_board_4x5);
-            boardHeight = 5;
-        }
-
-        if (id == R.id.start_game_5x5) {
-            setContentView(R.layout.activity_game_board_5x5);
-            boardHeight = 5;
-        }
+        setContentView(bundle.getInt("boardId"));
+        boardWidth = bundle.getInt("width");
+        boardHeight = bundle.getInt("height");
 
         computerButtons = new ArrayList<Button>();
         addBoardToArray(computerButtons, "computer_board");
 
         playerButtons = new ArrayList<Button>();
         addBoardToArray(playerButtons, "player_board");
-
-        //FIXME sqrt will not work with rectangles
-        boardWidth = (int) Math.sqrt((double) playerButtons.size());
 
         /**
          * The only way to set button size dynamically with
@@ -95,7 +76,20 @@ public class GameBoard extends Activity {
         resetBoard(computerButtons);
         resetBoard(playerButtons);
         increaseDifficult();
+        updateTurnView();
+        updateGamesPlayedView();
+        updateGamesWonView();
         setComputerBoard();
+    }
+
+    private void updateGamesPlayedView(){
+        TextView turnsLeft = (TextView) findViewById(R.id.gamesPlayed);
+        turnsLeft.setText(String.valueOf(gamesPlayed));
+    }
+
+    private void updateGamesWonView(){
+        TextView turnsLeft = (TextView) findViewById(R.id.gamesWon);
+        turnsLeft.setText(String.valueOf(gamesWon));
     }
 
     /**
@@ -117,9 +111,8 @@ public class GameBoard extends Activity {
         difficulty++;
         turn = difficulty;
 
-        TextView tv = (TextView) findViewById(diffLevel);
+        TextView tv = (TextView) findViewById(R.id.diffLevel);
         tv.setText(String.valueOf(difficulty));
-        //Toast.makeText(this, "Difficulty set to " + difficulty, Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -130,7 +123,7 @@ public class GameBoard extends Activity {
      */
     private void addBoardToArray(ArrayList<Button> array, String boardId) {
         int id = getResources().getIdentifier(boardId, "id", getPackageName());
-        View board = (View) findViewById(id);
+        View board = findViewById(id);
         for (int index = 0; index < ((ViewGroup) board).getChildCount(); ++index) {
             View nextChild = ((ViewGroup) board).getChildAt(index);
             if (nextChild instanceof Button) {
@@ -166,10 +159,19 @@ public class GameBoard extends Activity {
             togglePlus(button, board);
 
             turn--;
+            updateTurnView();
             if (turn == 0) {
                 checkForWin();
             }
         }
+    }
+
+    /**
+     * Updates the GUI with the number of turns remaining
+     */
+    private void updateTurnView(){
+        TextView turnsLeft = (TextView) findViewById(R.id.movesLeft);
+        turnsLeft.setText(String.valueOf(turn));
     }
 
     /**
@@ -205,6 +207,7 @@ public class GameBoard extends Activity {
      * Notifies player of the result
      */
     private void checkForWin() {
+        gamesPlayed++;
         for (int i = 0; i < playerButtons.size(); i++) {
             int playerButtonColor = playerButtons.get(i).getCurrentTextColor();
             int computerButtonColor = computerButtons.get(i).getCurrentTextColor();
@@ -216,6 +219,7 @@ public class GameBoard extends Activity {
             }
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
+        gamesWon++;
         newGame();
     }
 
