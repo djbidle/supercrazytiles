@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "477328566882",
+    "firebase_url": "https://supercrazytiles.firebaseio.com",
+    "project_id": "supercrazytiles",
+    "storage_bucket": "supercrazytiles.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477328566882:android:7dd02aae191cbf05",
+        "android_client_info": {
+          "package_name": "net.zacharybest.supercrazytiles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477328566882-ot0g058d831drpiokhh0d60arvfdmr8d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAouOvV6ydeP2PSa7z831dy9KgPhuebq6U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

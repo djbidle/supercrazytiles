@@ -12,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -66,6 +69,18 @@ public class GameBoard extends Activity {
         setButtonSize(playerButtons);
 
         newGame();
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        /* ONLY WHEN LIVE!!!!!!!!
+        * DO NOT UNCOMMENT!!!!!
+        * DO NOT REMOVE!!!!!!!!!!!
+        AdRequest adRequest = new AdRequest.Builder().build();
+        */
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("")
+                .build();
+        mAdView.loadAd(adRequest);
 
     }
 
