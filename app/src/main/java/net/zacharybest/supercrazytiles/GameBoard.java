@@ -11,14 +11,11 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-import static android.R.attr.id;
 
 
 /**
@@ -65,8 +62,8 @@ public class GameBoard extends Activity {
          * TableLayout didn't work because addBoardToArray was not
          * getting all the buttons. Did not want to mess with that code.
          **/
-        setButtonSize(computerButtons);
-        setButtonSize(playerButtons);
+        //setButtonSize(computerButtons);
+        //setButtonSize(playerButtons);
 
         newGame();
 
@@ -92,11 +89,11 @@ public class GameBoard extends Activity {
         resetBoard(playerButtons);
         increaseDifficult();
         updateTurnView();
-        updateGamesPlayedView();
-        updateGamesWonView();
+        //updateGamesPlayedView();
+        //updateGamesWonView();
         setComputerBoard();
     }
-
+    /*
     private void updateGamesPlayedView(){
         TextView turnsLeft = (TextView) findViewById(R.id.gamesPlayed);
         turnsLeft.setText(String.valueOf(gamesPlayed));
@@ -106,7 +103,7 @@ public class GameBoard extends Activity {
         TextView turnsLeft = (TextView) findViewById(R.id.gamesWon);
         turnsLeft.setText(String.valueOf(gamesWon));
     }
-
+    */
     /**
      * set all tiles to their inactive state
      *

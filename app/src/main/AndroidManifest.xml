@@ -2,11 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.zacharybest.supercrazytiles">
 
-    <supports-screens
-        android:largeScreens="true"
-        android:normalScreens="true"
+    <supports-screens android:resizeable="true"
         android:smallScreens="true"
-        android:xlargeScreens="true" />
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true"
+        android:requiresSmallestWidthDp="320"
+        android:largestWidthLimitDp="480"
+        android:compatibleWidthLimitDp="480"/>
+
+
 
     <uses-permission android:name="android.permission.INTERNET" />
 
