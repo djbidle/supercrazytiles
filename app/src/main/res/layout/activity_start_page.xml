@@ -3,33 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/tile_background">
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
-
             <Button
                 android:text="Start Game - 4x4 Board"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:onClick="start4x4Game" />
-
-            <Button
-                android:text="Start Game - 4x5 Board"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/start_game_4x5"
-                android:onClick="start4x5Game" />
-
-            <Button
-                android:text="Start Game - 5x5 Board"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/start_game_5x5"
-                android:onClick="start5x5Game" />
-
-        </LinearLayout>
-
 </LinearLayout>

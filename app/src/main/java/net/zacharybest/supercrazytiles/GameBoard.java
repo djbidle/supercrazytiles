@@ -2,6 +2,7 @@ package net.zacharybest.supercrazytiles;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -26,11 +27,8 @@ public class GameBoard extends Activity {
     private ArrayList<Button> computerButtons;
     private ArrayList<Button> playerButtons;
     private int boardWidth;
-    private int boardHeight;
     private int difficulty = 0;
     private int turn = difficulty;
-    private int gamesPlayed = 0;
-    private int gamesWon = 0;
 
     private final int activeColor = 0xFF388E3C; //green
     private final int inactiveColor = 0xFF1A237E; //blue
@@ -47,23 +45,14 @@ public class GameBoard extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         setContentView(bundle.getInt("boardId"));
-        boardWidth = bundle.getInt("width");
-        boardHeight = bundle.getInt("height");
+
+        boardWidth = getBoardWidth();
 
         computerButtons = new ArrayList<Button>();
         addBoardToArray(computerButtons, "computer_board");
 
         playerButtons = new ArrayList<Button>();
         addBoardToArray(playerButtons, "player_board");
-
-        /**
-         * The only way to set button size dynamically with
-         * GridLayout is to use columnWeight/rowWeight attributes.
-         * TableLayout didn't work because addBoardToArray was not
-         * getting all the buttons. Did not want to mess with that code.
-         **/
-        //setButtonSize(computerButtons);
-        //setButtonSize(playerButtons);
 
         newGame();
 
@@ -87,23 +76,11 @@ public class GameBoard extends Activity {
     private void newGame() {
         resetBoard(computerButtons);
         resetBoard(playerButtons);
-        increaseDifficult();
+        increaseDifficulty();
         updateTurnView();
-        //updateGamesPlayedView();
-        //updateGamesWonView();
         setComputerBoard();
     }
-    /*
-    private void updateGamesPlayedView(){
-        TextView turnsLeft = (TextView) findViewById(R.id.gamesPlayed);
-        turnsLeft.setText(String.valueOf(gamesPlayed));
-    }
 
-    private void updateGamesWonView(){
-        TextView turnsLeft = (TextView) findViewById(R.id.gamesWon);
-        turnsLeft.setText(String.valueOf(gamesWon));
-    }
-    */
     /**
      * set all tiles to their inactive state
      *
@@ -116,16 +93,14 @@ public class GameBoard extends Activity {
         }
     }
 
-    /**
-     * Increase the difficulty and notify the user
-     */
-    private void increaseDifficult() {
-        difficulty++;
-        turn = difficulty;
-
-        TextView tv = (TextView) findViewById(R.id.diffLevel);
-        tv.setText(String.valueOf(difficulty));
+    private int getBoardWidth(){
+        int id = getResources().getIdentifier("computer_board", "id", getPackageName());
+        View board = findViewById(id);
+        View firstRow = ((ViewGroup) board).getChildAt(0);
+        return ((ViewGroup) firstRow).getChildCount();
     }
+
+
 
     /**
      * get all buttons from container and add to array
@@ -137,12 +112,27 @@ public class GameBoard extends Activity {
         int id = getResources().getIdentifier(boardId, "id", getPackageName());
         View board = findViewById(id);
         for (int index = 0; index < ((ViewGroup) board).getChildCount(); ++index) {
-            View nextChild = ((ViewGroup) board).getChildAt(index);
-            if (nextChild instanceof Button) {
-                Button button = (Button) nextChild;
-                array.add(button);
+            View row = ((ViewGroup) board).getChildAt(index);
+
+            for(int i = 0; i < ((ViewGroup) row).getChildCount(); i++) {
+               View nextChild = ((ViewGroup) row).getChildAt(i);
+                if (nextChild instanceof Button) {
+                    Button button = (Button) nextChild;
+                    array.add(button);
+                }
             }
         }
+    }
+
+    /**
+     * Increase the difficulty and notify the user
+     */
+    private void increaseDifficulty() {
+        difficulty++;
+        turn = difficulty;
+
+        TextView tv = (TextView) findViewById(R.id.diffLevel);
+        tv.setText(String.valueOf(difficulty));
     }
 
     /**
@@ -219,7 +209,6 @@ public class GameBoard extends Activity {
      * Notifies player of the result
      */
     private void checkForWin() {
-        gamesPlayed++;
         for (int i = 0; i < playerButtons.size(); i++) {
             int playerButtonColor = playerButtons.get(i).getCurrentTextColor();
             int computerButtonColor = computerButtons.get(i).getCurrentTextColor();
@@ -231,7 +220,6 @@ public class GameBoard extends Activity {
             }
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
-        gamesWon++;
         newGame();
     }
 
@@ -246,16 +234,6 @@ public class GameBoard extends Activity {
         int color = currentColor == activeColor ? inactiveColor : activeColor;
         button.setTextColor(color);
         button.setBackgroundColor(color);
-    }
-
-    private void setButtonSize(ArrayList<Button> buttons) {
-        for (Button button : buttons) {
-            GridLayout.LayoutParams params = (GridLayout.LayoutParams) button.getLayoutParams();
-            params.width = (getResources().getDisplayMetrics().widthPixels / (boardWidth + 1));
-            params.height = (getResources().getDisplayMetrics().heightPixels / ((boardHeight * 2) + 2));
-            button.setLayoutParams(params);
-        }
-
     }
 
 }

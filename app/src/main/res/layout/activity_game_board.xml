@@ -5,234 +5,310 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_horizontal_margin"
-    android:paddingLeft="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_vertical_margin"
-    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:padding="16dp"
     android:background="@color/gameBoardAccent"
     tools:context="net.zacharybest.supercrazytiles.GameBoard">
 
-    <GridLayout
-        android:id="@+id/computer_board"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="4">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp"
+        android:layout_weight="1">
 
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp" />
-
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_gravity="center"
-        android:columnCount="4">
-
-        <TextView
-            android:id="@+id/diffLevelLabel"
+        <LinearLayout
+            android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_text_size"
-            android:layout_marginLeft="28dp"
-            android:layout_marginStart="28dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginEnd="1dp"
-            android:text="Difficulty Level:" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_centerInParent="true"
+            android:columnCount="4">
 
-        <TextView
-            android:id="@+id/diffLevel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_text_size"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp"
-            android:text="1" />
+            <TextView
+                android:id="@+id/diffLevelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text="Difficulty Level:" />
 
-        <TextView
-            android:id="@+id/movesLeftLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_text_size"
-            android:layout_marginLeft="55dp"
-            android:layout_marginStart="55dp"
-            android:layout_marginRight="1dp"
-            android:layout_marginEnd="1dp"
-            android:text="Moves Left:" />
+            <TextView
+                android:id="@+id/diffLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="50sp"
+                android:text="0" />
 
-        <TextView
-            android:id="@+id/movesLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/activity_text_size"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="1dp"
-            android:text="3" />
+            <TextView
+                android:id="@+id/movesLeftLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text="Moves Left:" />
 
-    </GridLayout>
+            <TextView
+                android:id="@+id/movesLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:text="0" />
+        </LinearLayout>
 
-    <GridLayout
-        android:id="@+id/player_board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:columnCount="4">
+        <LinearLayout
+            android:id="@+id/computer_board"
+            android:layout_above="@id/info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
-        <Button
-            android:layout_width="68dp"
-            android:layout_height="48dp"
-            android:layout_margin="1dp"
-            android:onClick="takeTurn" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
-    </GridLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/player_board"
+            android:layout_below="@id/info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:onClick="takeTurn"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
