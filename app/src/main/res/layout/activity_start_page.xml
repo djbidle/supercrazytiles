@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/tile_background">
             <Button
-                android:text="Start Game - 4x4 Board"
+                android:text="Start Game"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:onClick="start4x4Game" />
+                android:onClick="startGame" />
 </LinearLayout>

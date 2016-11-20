@@ -2,15 +2,13 @@ package net.zacharybest.supercrazytiles;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -24,14 +22,11 @@ import java.util.Random;
  */
 public class GameBoard extends Activity {
 
-    private ArrayList<Button> computerButtons;
-    private ArrayList<Button> playerButtons;
+    private ArrayList<ToggleButton> computerButtons;
+    private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
     private int difficulty = 0;
     private int turn = difficulty;
-
-    private final int activeColor = 0xFF388E3C; //green
-    private final int inactiveColor = 0xFF1A237E; //blue
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +43,10 @@ public class GameBoard extends Activity {
 
         boardWidth = getBoardWidth();
 
-        computerButtons = new ArrayList<Button>();
+        computerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(computerButtons, "computer_board");
 
-        playerButtons = new ArrayList<Button>();
+        playerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(playerButtons, "player_board");
 
         newGame();
@@ -86,10 +81,9 @@ public class GameBoard extends Activity {
      *
      * @param board the collection of tiles to be reset
      */
-    private void resetBoard(ArrayList<Button> board) {
-        for (Button button : board) {
-            button.setTextColor(inactiveColor);
-            button.setBackgroundColor(inactiveColor);
+    private void resetBoard(ArrayList<ToggleButton> board) {
+        for (ToggleButton button : board) {
+            button.setChecked(false);
         }
     }
 
@@ -108,7 +102,7 @@ public class GameBoard extends Activity {
      * @param array   receives buttons
      * @param boardId the id of the container to grab buttons from
      */
-    private void addBoardToArray(ArrayList<Button> array, String boardId) {
+    private void addBoardToArray(ArrayList<ToggleButton> array, String boardId) {
         int id = getResources().getIdentifier(boardId, "id", getPackageName());
         View board = findViewById(id);
         for (int index = 0; index < ((ViewGroup) board).getChildCount(); ++index) {
@@ -116,8 +110,8 @@ public class GameBoard extends Activity {
 
             for(int i = 0; i < ((ViewGroup) row).getChildCount(); i++) {
                View nextChild = ((ViewGroup) row).getChildAt(i);
-                if (nextChild instanceof Button) {
-                    Button button = (Button) nextChild;
+                if (nextChild instanceof ToggleButton) {
+                    ToggleButton button = (ToggleButton) nextChild;
                     array.add(button);
                 }
             }
@@ -145,6 +139,7 @@ public class GameBoard extends Activity {
         int min = 0;
         for (int i = 0; i < difficulty; i++) {
             int rIndex = rng.nextInt(max - min + 1) + min;
+            computerButtons.get(rIndex).toggle();
             togglePlus(computerButtons.get(rIndex), computerButtons);
         }
     }
@@ -155,9 +150,9 @@ public class GameBoard extends Activity {
      * @param view the button the player activated to spend their turn
      */
     public void takeTurn(View view) {
-        if (view instanceof Button) {
-            Button button = (Button) view;
-            ArrayList<Button> board = playerButtons.contains(button) ? playerButtons : computerButtons;
+        if (view instanceof ToggleButton) {
+            ToggleButton button = (ToggleButton) view;
+            ArrayList<ToggleButton> board = playerButtons.contains(button) ? playerButtons : computerButtons;
             togglePlus(button, board);
 
             turn--;
@@ -182,25 +177,24 @@ public class GameBoard extends Activity {
      * @param button the center of the "+"
      * @param board  the board on which the button was clicked
      */
-    private void togglePlus(Button button, ArrayList<Button> board) {
+    private void togglePlus(ToggleButton button, ArrayList<ToggleButton> board) {
         int buttonIndex = board.indexOf(button);
         int leftIndex = buttonIndex - 1;
         int rightIndex = buttonIndex + 1;
         int topIndex = buttonIndex - boardWidth;
         int bottomIndex = buttonIndex + boardWidth;
 
-        toggleButton(button);
         if (buttonIndex % boardWidth > 0) {
-            toggleButton(board.get(leftIndex));
+            board.get(leftIndex).toggle();
         }
         if ((buttonIndex % boardWidth) < boardWidth - 1) {
-            toggleButton(board.get(rightIndex));
+            board.get(rightIndex).toggle();
         }
         if (topIndex >= 0) {
-            toggleButton(board.get(topIndex));
+            board.get(topIndex).toggle();
         }
         if (bottomIndex < board.size()) {
-            toggleButton(board.get(bottomIndex));
+            board.get(bottomIndex).toggle();
         }
     }
 
@@ -210,9 +204,9 @@ public class GameBoard extends Activity {
      */
     private void checkForWin() {
         for (int i = 0; i < playerButtons.size(); i++) {
-            int playerButtonColor = playerButtons.get(i).getCurrentTextColor();
-            int computerButtonColor = computerButtons.get(i).getCurrentTextColor();
-            if (playerButtonColor != computerButtonColor) {
+            boolean playerButtonState = playerButtons.get(i).isChecked();
+            boolean computerButtonState = computerButtons.get(i).isChecked();
+            if (playerButtonState != computerButtonState) {
                 Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
                 difficulty = 0;
                 newGame();
@@ -221,19 +215,6 @@ public class GameBoard extends Activity {
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
         newGame();
-    }
-
-    /**
-     * changes the button color to active if inactive
-     * changes the button color to inactive if active
-     *
-     * @param button the target of the color change
-     */
-    private void toggleButton(Button button) {
-        int currentColor = button.getCurrentTextColor();
-        int color = currentColor == activeColor ? inactiveColor : activeColor;
-        button.setTextColor(color);
-        button.setBackgroundColor(color);
     }
 
 }
