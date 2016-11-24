@@ -26,6 +26,7 @@ public class GameBoard extends Activity {
     private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
     private int difficulty;
+    private int lives;
     private int turn = difficulty;
     private int wins = 0;
 
@@ -51,6 +52,7 @@ public class GameBoard extends Activity {
         addBoardToArray(playerButtons, "player_board");
 
         setDifficulty(1);
+        setLives(3);
         newGame();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -75,6 +77,11 @@ public class GameBoard extends Activity {
         resetBoard(playerButtons);
         updateTurnView();
         setComputerBoard();
+    }
+
+    private void tryAgain(){
+        resetBoard(playerButtons);
+        updateTurnView();
     }
 
     /**
@@ -126,9 +133,19 @@ public class GameBoard extends Activity {
     private void setDifficulty(int level){
         difficulty = level;
         turn = difficulty;
-
         TextView tv = (TextView) findViewById(R.id.diffLevel);
         tv.setText(String.valueOf(difficulty));
+    }
+
+    /**
+     * sets the appropriate number of lives and updates gui
+     * @param lives
+     */
+
+    private void setLives(int lives){
+        this.lives = lives;
+        TextView tv = (TextView) findViewById(R.id.lives);
+        tv.setText(String.valueOf(lives));
     }
 
     /**
@@ -210,9 +227,17 @@ public class GameBoard extends Activity {
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
                 Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
-                setDifficulty(1);
-                wins = 0;
-                newGame();
+                lives--;
+                if ( lives < 1) {
+                    setDifficulty(1);
+                    wins = 0;
+                    setLives(3);
+                    newGame();
+                } else {
+                    setDifficulty(difficulty);
+                    setLives(lives);
+                    tryAgain();
+                }
                 return;
             }
         }

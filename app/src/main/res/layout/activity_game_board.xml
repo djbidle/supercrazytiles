@@ -25,6 +25,21 @@
             android:columnCount="4">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text="Lives:" />
+
+            <TextView
+                android:id="@+id/lives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="50sp"
+                android:text="0" />
+
+            <TextView
                 android:id="@+id/diffLevelLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
