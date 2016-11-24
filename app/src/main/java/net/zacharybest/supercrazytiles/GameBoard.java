@@ -25,8 +25,9 @@ public class GameBoard extends Activity {
     private ArrayList<ToggleButton> computerButtons;
     private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
-    private int difficulty = 0;
+    private int difficulty;
     private int turn = difficulty;
+    private int wins = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,7 @@ public class GameBoard extends Activity {
         playerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(playerButtons, "player_board");
 
+        setDifficulty(1);
         newGame();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -71,7 +73,6 @@ public class GameBoard extends Activity {
     private void newGame() {
         resetBoard(computerButtons);
         resetBoard(playerButtons);
-        increaseDifficulty();
         updateTurnView();
         setComputerBoard();
     }
@@ -119,10 +120,11 @@ public class GameBoard extends Activity {
     }
 
     /**
-     * Increase the difficulty and notify the user
+     * sets the appropriate difficulty level and update gui
+     * @param level
      */
-    private void increaseDifficulty() {
-        difficulty++;
+    private void setDifficulty(int level){
+        difficulty = level;
         turn = difficulty;
 
         TextView tv = (TextView) findViewById(R.id.diffLevel);
@@ -208,12 +210,19 @@ public class GameBoard extends Activity {
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
                 Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
-                difficulty = 0;
+                setDifficulty(1);
+                wins = 0;
                 newGame();
                 return;
             }
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
+        wins++;
+        if (wins % 3 == 0){
+            difficulty++;
+            wins = 0;
+        }
+        setDifficulty(difficulty);
         newGame();
     }
 
