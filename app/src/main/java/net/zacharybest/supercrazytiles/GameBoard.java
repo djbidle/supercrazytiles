@@ -29,6 +29,7 @@ public class GameBoard extends Activity {
     private int lives;
     private int turn = difficulty;
     private int wins = 0;
+    private int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class GameBoard extends Activity {
 
         setDifficulty(1);
         setLives(3);
+        setScore(0);
         newGame();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -145,7 +147,13 @@ public class GameBoard extends Activity {
     private void setLives(int lives){
         this.lives = lives;
         TextView tv = (TextView) findViewById(R.id.lives);
-        tv.setText(String.valueOf(lives));
+        tv.setText(String.valueOf(this.lives));
+    }
+
+    private void setScore(int score){
+        this.score = score;
+        TextView tv = (TextView) findViewById(R.id.score);
+        tv.setText(String.valueOf(this.score));
     }
 
     /**
@@ -232,6 +240,7 @@ public class GameBoard extends Activity {
                     setDifficulty(1);
                     wins = 0;
                     setLives(3);
+                    setScore(0);
                     newGame();
                 } else {
                     setDifficulty(difficulty);
@@ -243,6 +252,7 @@ public class GameBoard extends Activity {
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
         wins++;
+        setScore(score + (difficulty * 100));
         if (wins % 3 == 0){
             difficulty++;
             wins = 0;
