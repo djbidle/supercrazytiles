@@ -13,6 +13,9 @@ import android.widget.ToggleButton;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -48,8 +51,25 @@ public class GameBoard extends Activity {
 
         playerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(playerButtons, "player_board");
+    }
 
-        stats = new GameStats();
+    @Override
+    public void onStart(){
+        super.onStart();
+        try {
+            ObjectInputStream ois = new ObjectInputStream(
+                    new FileInputStream("/data/data/net.zacharybest.supercrazytiles/saved_state.bin")
+            );
+            stats = (GameStats) ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (stats == null) {
+            stats = new GameStats();
+        }
         newGame();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -63,7 +83,22 @@ public class GameBoard extends Activity {
                 .addTestDevice("")
                 .build();
         mAdView.loadAd(adRequest);
+    }
 
+    @Override
+    public void onPause(){
+        super.onPause();
+        ArrayList<Boolean> computerBoard = populateBooleanArrayList(computerButtons);
+        ArrayList<Boolean> playerBoard = populateBooleanArrayList(playerButtons);
+        stats.saveGame(computerBoard, playerBoard);
+    }
+
+    private ArrayList<Boolean> populateBooleanArrayList(ArrayList<ToggleButton> arrayList){
+        ArrayList<Boolean> output = new ArrayList<Boolean>();
+        for (ToggleButton btn : arrayList){
+            output.add(btn.isChecked());
+        }
+        return output;
     }
 
     /**
@@ -73,7 +108,19 @@ public class GameBoard extends Activity {
         resetBoard(computerButtons);
         resetBoard(playerButtons);
         updateStats();
-        setComputerBoard();
+        if (stats.getComputerBoard() != null){
+            populateBoards();
+            stats.deleteBoards();
+        } else {
+            setComputerBoard();
+        }
+    }
+
+    private void populateBoards(){
+        for (int i = 0; i < computerButtons.size(); i++){
+            computerButtons.get(i).setChecked(stats.getComputerBoard().get(i));
+            playerButtons.get(i).setChecked(stats.getPlayerBoard().get(i));
+        }
     }
 
     private void tryAgain(){
