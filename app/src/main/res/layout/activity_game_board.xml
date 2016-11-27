@@ -9,88 +9,101 @@
     android:background="@color/gameBoardAccent"
     tools:context="net.zacharybest.supercrazytiles.GameBoard">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp">
-        <TextView
-            android:layout_width="match_parent"
+        android:background="@drawable/gold">
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginRight="3sp"
-            android:text="Score: "/>
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:layout_marginRight="3sp"
-            android:text="0"/>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text="Score: "
+                android:layout_marginTop="30dp" />
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text="0"
+                android:layout_marginTop="30dp" />
+        </LinearLayout>
+    </FrameLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="16dp"
         android:layout_weight="1">
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/info"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:layout_centerInParent="true"
-            android:columnCount="4">
-
-            <TextView
+            android:background="@drawable/gold">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:layout_marginRight="3sp"
-                android:text="Lives:" />
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true">
 
-            <TextView
-                android:id="@+id/lives"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:text="0" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:layout_marginRight="3dp"
+                    android:text="Lives:" />
 
-            <TextView
-                android:id="@+id/diffLevelLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:layout_marginRight="3sp"
-                android:layout_marginLeft="40sp"
-                android:text="Difficulty Level:" />
+                <TextView
+                    android:id="@+id/lives"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:text="0" />
 
-            <TextView
-                android:id="@+id/diffLevel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:layout_marginRight="40sp"
-                android:text="0" />
+                <TextView
+                    android:id="@+id/diffLevelLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:text="Difficulty Level:"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp" />
 
-            <TextView
-                android:id="@+id/movesLeftLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:layout_marginRight="3sp"
-                android:text="Moves Left:" />
+                <TextView
+                    android:id="@+id/diffLevel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:text="0" />
 
-            <TextView
-                android:id="@+id/movesLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/activity_text_size"
-                android:text="0" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/movesLeftLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:text="Moves Left:"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp" />
 
+                <TextView
+                    android:id="@+id/movesLeft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/activity_text_size"
+                    android:text="0" />
+
+            </LinearLayout>
+        </FrameLayout>
         <LinearLayout
             android:id="@+id/computer_board"
             android:layout_above="@id/info"
