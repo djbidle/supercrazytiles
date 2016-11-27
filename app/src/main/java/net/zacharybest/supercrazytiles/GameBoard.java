@@ -25,11 +25,8 @@ public class GameBoard extends Activity {
     private ArrayList<ToggleButton> computerButtons;
     private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
-    private int difficulty;
-    private int lives;
-    private int turn = difficulty;
-    private int wins = 0;
-    private int score = 0;
+
+    private static GameStats stats;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +49,7 @@ public class GameBoard extends Activity {
         playerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(playerButtons, "player_board");
 
-        setDifficulty(1);
-        setLives(3);
-        setScore(0);
+        stats = new GameStats();
         newGame();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
@@ -77,13 +72,14 @@ public class GameBoard extends Activity {
     private void newGame() {
         resetBoard(computerButtons);
         resetBoard(playerButtons);
-        updateTurnView();
+        updateStats();
         setComputerBoard();
     }
 
     private void tryAgain(){
         resetBoard(playerButtons);
-        updateTurnView();
+        updateTurns();
+        updateLives();
     }
 
     /**
@@ -129,32 +125,40 @@ public class GameBoard extends Activity {
     }
 
     /**
-     * sets the appropriate difficulty level and update gui
-     * @param level
+     * updates a GUI component with the current stat value
+     * @param id the R.id of the resource to be updated.
      */
-    private void setDifficulty(int level){
-        difficulty = level;
-        turn = difficulty;
-        TextView tv = (TextView) findViewById(R.id.diffLevel);
-        tv.setText(String.valueOf(difficulty));
+    private void updateStat(int id, int value){
+        TextView tv = (TextView) findViewById(id);
+        tv.setText(String.valueOf(value));
     }
 
     /**
-     * sets the appropriate number of lives and updates gui
-     * @param lives
+     * updates all GUI components with their current values
      */
-
-    private void setLives(int lives){
-        this.lives = lives;
-        TextView tv = (TextView) findViewById(R.id.lives);
-        tv.setText(String.valueOf(this.lives));
+    private void updateStats(){
+        updateScore();
+        updateLives();
+        updateDifficulty();
+        updateTurns();
     }
 
-    private void setScore(int score){
-        this.score = score;
-        TextView tv = (TextView) findViewById(R.id.score);
-        tv.setText(String.valueOf(this.score));
+    private void updateScore(){
+        updateStat(R.id.score, stats.getScore());
     }
+
+    private void updateLives(){
+        updateStat(R.id.lives, stats.getLives());
+    }
+
+    private void updateDifficulty(){
+        updateStat(R.id.diffLevel, stats.getDifficulty());
+    }
+
+    private void updateTurns(){
+        updateStat(R.id.movesLeft, stats.getTurns());
+    }
+
 
     /**
      * randomly selects tiles to activate on the computer board.
@@ -164,7 +168,7 @@ public class GameBoard extends Activity {
         Random rng = new Random();
         int max = computerButtons.size() - 1;
         int min = 0;
-        for (int i = 0; i < difficulty; i++) {
+        for (int i = 0; i < stats.getDifficulty(); i++) {
             int rIndex = rng.nextInt(max - min + 1) + min;
             computerButtons.get(rIndex).toggle();
             togglePlus(computerButtons.get(rIndex), computerButtons);
@@ -182,20 +186,12 @@ public class GameBoard extends Activity {
             ArrayList<ToggleButton> board = playerButtons.contains(button) ? playerButtons : computerButtons;
             togglePlus(button, board);
 
-            turn--;
-            updateTurnView();
-            if (turn == 0) {
+            stats.useTurn();
+            updateTurns();
+            if (stats.getTurns() == 0) {
                 checkForWin();
             }
         }
-    }
-
-    /**
-     * Updates the GUI with the number of turns remaining
-     */
-    private void updateTurnView(){
-        TextView turnsLeft = (TextView) findViewById(R.id.movesLeft);
-        turnsLeft.setText(String.valueOf(turn));
     }
 
     /**
@@ -235,29 +231,18 @@ public class GameBoard extends Activity {
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
                 Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
-                lives--;
-                if ( lives < 1) {
-                    setDifficulty(1);
-                    wins = 0;
-                    setLives(3);
-                    setScore(0);
-                    newGame();
-                } else {
-                    setDifficulty(difficulty);
-                    setLives(lives);
+                stats.handleLoss();
+                if ( stats.getLives() > 0) {
                     tryAgain();
+                } else {
+                    stats = new GameStats();
+                    newGame();
                 }
                 return;
             }
         }
         Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
-        wins++;
-        setScore(score + (difficulty * 100));
-        if (wins % 3 == 0){
-            difficulty++;
-            wins = 0;
-        }
-        setDifficulty(difficulty);
+        stats.handleWin();
         newGame();
     }
 
