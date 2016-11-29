@@ -8,8 +8,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,6 +24,7 @@ import java.util.Random;
  */
 public class GameBoard extends Activity {
 
+    private InterstitialAd mInterstitialAd;
     private ArrayList<ToggleButton> computerButtons;
     private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
@@ -43,16 +45,16 @@ public class GameBoard extends Activity {
 
         playerButtons = new ArrayList<ToggleButton>();
         addBoardToArray(playerButtons, "player_board");
+
     }
 
     @Override
     public void onStart(){
         super.onStart();
+        requestAd();
+
         try {
-            ObjectInputStream ois = new ObjectInputStream(
-                    new FileInputStream("/data/data/net.zacharybest.supercrazytiles/saved_state.bin")
-            );
-            stats = (GameStats) ois.readObject();
+            stats = loadSave();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -63,18 +65,33 @@ public class GameBoard extends Activity {
             stats = new GameStats();
         }
         newGame();
+    }
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        /* ONLY WHEN LIVE!!!!!!!!
-        * DO NOT UNCOMMENT!!!!!
-        * DO NOT REMOVE!!!!!!!!!!!
-        AdRequest adRequest = new AdRequest.Builder().build();
-        */
+    private GameStats loadSave() throws IOException, ClassNotFoundException{
+        ObjectInputStream ois = new ObjectInputStream(
+                new FileInputStream("/data/data/net.zacharybest.supercrazytiles/saved_state.bin")
+        );
+        return (GameStats) ois.readObject();
+    }
+
+    private void requestAd(){
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+
+        mInterstitialAd.setAdListener(new AdListener() {
+
+            @Override
+            public void onAdLoaded(){
+                mInterstitialAd.show();
+            }
+        });
+
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("")
                 .build();
-        mAdView.loadAd(adRequest);
+
+        mInterstitialAd.loadAd(adRequest);
     }
 
     @Override

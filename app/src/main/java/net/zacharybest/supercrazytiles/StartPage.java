@@ -27,14 +27,19 @@ public class StartPage extends AppCompatActivity {
 
         setContentView(R.layout.activity_start_page);
 
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+
         save = new File("/data/data/net.zacharybest.supercrazytiles/saved_state.bin");
         if (save.exists()){
             Button btn = (Button) findViewById(R.id.continueButton);
             btn.setClickable(true);
             btn.setEnabled(true);
         }
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
 
+        loadBannerAd();
+    }
+
+    private void loadBannerAd(){
         AdView mAdView = (AdView) findViewById(R.id.adView);
         /* ONLY WHEN LIVE!!!!!!!!
         * DO NOT UNCOMMENT!!!!!
@@ -45,6 +50,7 @@ public class StartPage extends AppCompatActivity {
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice("")
                 .build();
+
         mAdView.loadAd(adRequest);
     }
 
@@ -60,5 +66,4 @@ public class StartPage extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
-
 }
