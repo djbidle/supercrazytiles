@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
@@ -29,6 +31,18 @@ public class StartPage extends AppCompatActivity {
             btn.setEnabled(true);
         }
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        /* ONLY WHEN LIVE!!!!!!!!
+        * DO NOT UNCOMMENT!!!!!
+        * DO NOT REMOVE!!!!!!!!!!!
+        AdRequest adRequest = new AdRequest.Builder().build();
+        */
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("")
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     public void newGame(View view) {

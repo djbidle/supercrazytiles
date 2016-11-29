@@ -45,7 +45,7 @@
                 android:background="@drawable/landing_page_button_selector"
                 android:textSize="@dimen/activity_text_size"
                 android:text="New Game"
-                android:onClick="startGame"
+                android:onClick="newGame"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp" />
