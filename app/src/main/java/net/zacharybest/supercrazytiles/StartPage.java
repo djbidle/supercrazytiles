@@ -20,10 +20,13 @@ import java.io.File;
 public class StartPage extends AppCompatActivity {
 
     private File save;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_start_page);
+
         save = new File("/data/data/net.zacharybest.supercrazytiles/saved_state.bin");
         if (save.exists()){
             Button btn = (Button) findViewById(R.id.continueButton);
