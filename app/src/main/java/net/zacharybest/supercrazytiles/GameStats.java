@@ -52,14 +52,16 @@ public class GameStats implements Serializable{
         }
     }
 
-    public void handleWin(){
+    public int handleWin(){
         this.winIndex++;
-        addScore(this.difficulty * 100);
+        int scoreToAdd = this.difficulty * 100;
+        addScore(scoreToAdd);
         if (winIndex % winThreshold == 0){
             difficulty++;
             winIndex = 0;
         }
         turns = difficulty;
+        return scoreToAdd;
     }
 
     public void handleLoss(){

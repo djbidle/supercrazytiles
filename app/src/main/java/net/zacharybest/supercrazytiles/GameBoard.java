@@ -1,5 +1,6 @@
 package net.zacharybest.supercrazytiles;
 
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,6 +30,9 @@ public class GameBoard extends Activity {
     private ArrayList<ToggleButton> playerButtons;
     private int boardWidth;
 
+    private TextView scoreView;
+    private TextView scoreAdd;
+
     private static GameStats stats;
 
     @Override
@@ -37,6 +41,9 @@ public class GameBoard extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         setContentView(bundle.getInt("boardId"));
+
+        scoreView = (TextView) findViewById(R.id.score);
+        scoreAdd = (TextView) findViewById(R.id.addScoreDisplay);
 
         boardWidth = getBoardWidth();
 
@@ -286,7 +293,7 @@ public class GameBoard extends Activity {
             boolean playerButtonState = playerButtons.get(i).isChecked();
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
-                Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
                 stats.handleLoss();
                 if ( stats.getLives() > 0) {
                     tryAgain();
@@ -297,9 +304,29 @@ public class GameBoard extends Activity {
                 return;
             }
         }
-        Toast.makeText(this, "You Win!!!", Toast.LENGTH_SHORT).show();
-        stats.handleWin();
+
+        int currentScore = stats.getScore();
+        animateTextCounter(stats.handleWin(), 0, scoreAdd, "+");
+        animateTextCounter(currentScore, stats.getScore(), scoreView, "");
         newGame();
+    }
+
+    private void animateTextCounter(int startingValue, int finalValue, final TextView  textView, final String textLead){
+
+        ValueAnimator valueAnimator = ValueAnimator.ofInt(startingValue, finalValue);
+        valueAnimator.setDuration(1250);
+
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+
+                textView.setText(textLead + valueAnimator.getAnimatedValue().toString());
+                if (textView.getText().equals(textLead+"0")){
+                    textView.setText("");
+                }
+            }
+        });
+        valueAnimator.start();
     }
 
 }

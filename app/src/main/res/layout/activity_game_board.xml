@@ -33,6 +33,14 @@
                 android:layout_marginRight="3sp"
                 android:text="0"
                 android:layout_marginTop="30dp" />
+            <TextView
+                android:id="@+id/addScoreDisplay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/activity_text_size"
+                android:layout_marginRight="3sp"
+                android:text=""
+                android:layout_marginTop="30dp" />
         </LinearLayout>
     </FrameLayout>
     <RelativeLayout
