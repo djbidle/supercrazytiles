@@ -16,31 +16,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginBottom="16dp">
+            android:layout_gravity="center">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/activity_text_size"
+                android:textColor="@color/game_play_text_color"
+                android:textStyle="bold"
                 android:layout_marginRight="3sp"
                 android:text="Score: "
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="2dp" />
             <TextView
                 android:id="@+id/score"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/activity_text_size"
+                android:textColor="@color/game_play_text_color"
+                android:textStyle="bold"
                 android:layout_marginRight="3sp"
                 android:text="0"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="2dp" />
             <TextView
                 android:id="@+id/addScoreDisplay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/activity_text_size"
+                android:textColor="@color/game_play_text_color"
+                android:textStyle="bold"
                 android:layout_marginRight="3sp"
                 android:text=""
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="2dp" />
         </LinearLayout>
     </FrameLayout>
     <RelativeLayout
@@ -67,6 +72,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
                     android:layout_marginRight="3dp"
                     android:text="Lives:" />
 
@@ -75,6 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
                     android:text="0" />
 
                 <TextView
@@ -82,6 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
                     android:text="Difficulty Level:"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp" />
@@ -91,6 +102,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
                     android:text="0" />
 
                 <TextView
@@ -98,7 +111,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
-                    android:text="Moves Left:"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
+                    android:text="Moves:"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp" />
 
@@ -107,6 +122,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/activity_text_size"
+                    android:textColor="@color/game_play_text_color"
+                    android:textStyle="bold"
                     android:text="0" />
 
             </LinearLayout>
