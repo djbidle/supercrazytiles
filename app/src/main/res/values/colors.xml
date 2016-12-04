@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="gameBoardAccent">#ECEFF1</color>
     <color name="gameBoardPrimary">#1A237E</color>
+    <color name="gray">#7E7E7E</color>
 </resources>

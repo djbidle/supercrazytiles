@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:src="@drawable/ic_logo"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        android:layout_marginTop="40dp"
+        android:scaleX="2.0"
+        android:scaleY="2.0"
+        android:layout_marginTop="100dp"
         android:layout_marginBottom="20dp" />
 
     <LinearLayout
@@ -22,7 +22,7 @@
         android:orientation="vertical"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="50dp">
 
         <LinearLayout
             android:layout_width="wrap_content"

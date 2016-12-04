@@ -4,8 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/gameBoardAccent"
+    android:background="@drawable/gray"
+    android:padding="@dimen/activity_horizontal_margin"
     tools:context="net.zacharybest.supercrazytiles.GameBoard">
 
     <FrameLayout
