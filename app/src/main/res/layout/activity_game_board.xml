@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gray"
     android:padding="@dimen/activity_horizontal_margin"
     tools:context="net.zacharybest.supercrazytiles.GameBoard">
 
@@ -93,7 +92,7 @@
                     android:textSize="@dimen/activity_text_size"
                     android:textColor="@color/game_play_text_color"
                     android:textStyle="bold"
-                    android:text="Difficulty Level:"
+                    android:text="Level:"
                     android:layout_marginLeft="10dp"
                     android:layout_marginStart="10dp" />
 

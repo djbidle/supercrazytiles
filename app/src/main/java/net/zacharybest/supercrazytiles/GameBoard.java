@@ -314,7 +314,7 @@ public class GameBoard extends Activity {
     private void animateTextCounter(int startingValue, int finalValue, final TextView  textView, final String textLead){
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(startingValue, finalValue);
-        valueAnimator.setDuration(1250);
+        valueAnimator.setDuration(2000);
 
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
