@@ -51,7 +51,7 @@
                     android:onClick="newGame"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginBottom="10dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -85,8 +85,8 @@
                     android:textStyle="bold"
                     android:text="Continue"
                     android:onClick="continueGame"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp" />
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -117,7 +117,7 @@
                     android:textStyle="bold"
                     android:text="Options"
                     android:onClick=""
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />
                 <TextView
                     android:layout_width="0dp"
