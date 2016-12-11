@@ -56,7 +56,7 @@ public class GameStats implements Serializable{
         this.winIndex++;
         int scoreToAdd = this.difficulty * 100;
         addScore(scoreToAdd);
-        if (winIndex % winThreshold == 0){
+        if (winIndex % winThreshold == 0 && difficulty < 9){
             difficulty++;
             winIndex = 0;
         }
