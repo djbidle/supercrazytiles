@@ -16,6 +16,7 @@ import com.google.android.gms.ads.InterstitialAd;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -229,12 +230,15 @@ public class GameBoard extends Activity {
      */
     private void setComputerBoard() {
         Random rng = new Random();
-        int max = computerButtons.size() - 1;
+        ArrayList<ToggleButton> clonedButtons = (ArrayList<ToggleButton>) computerButtons.clone();
         int min = 0;
         for (int i = 0; i < stats.getDifficulty(); i++) {
+            int max = clonedButtons.size() - 1;
             int rIndex = rng.nextInt(max - min + 1) + min;
-            computerButtons.get(rIndex).toggle();
-            togglePlus(computerButtons.get(rIndex), computerButtons);
+            ToggleButton selectedButton = clonedButtons.get(rIndex);
+            clonedButtons.remove(selectedButton);
+            selectedButton.toggle();
+            togglePlus(selectedButton, computerButtons);
         }
     }
 
