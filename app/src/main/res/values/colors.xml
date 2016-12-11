@@ -7,4 +7,6 @@
     <color name="gameBoardPrimary">#1A237E</color>
     <color name="start_page_text_color">#707070</color>
     <color name="game_play_text_color">#998100</color>
+    <color name="scoreDisplay_text_color">#FF0000</color>
+    <color name="scoreDisplay_shadow_color">#990000</color>
 </resources>
