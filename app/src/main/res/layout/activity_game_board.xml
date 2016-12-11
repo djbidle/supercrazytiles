@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
-    tools:context="net.zacharybest.supercrazytiles.GameBoard">
+    tools:context="net.zacharybest.supercrazytiles.GameBoard"
+    android:background="@drawable/tile_background">
 
     <FrameLayout
         android:layout_width="match_parent"
