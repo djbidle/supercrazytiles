@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:padding="@dimen/activity_horizontal_margin"
     tools:context="net.zacharybest.supercrazytiles.GameBoard"
-    android:background="@drawable/tile_background">
+    android:background="@drawable/temp_background">
+    <!-- background image was causing hangups -->
 
     <FrameLayout
         android:layout_width="match_parent"

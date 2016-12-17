@@ -3,7 +3,8 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background">
+    android:background="@drawable/temp_background">
+    <!-- background image was causing hangups -->
 
     <LinearLayout
         android:id="@+id/logo_container"
