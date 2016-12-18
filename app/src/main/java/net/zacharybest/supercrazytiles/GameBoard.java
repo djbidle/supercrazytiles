@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.android.gms.ads.AdListener;
@@ -16,7 +15,6 @@ import com.google.android.gms.ads.InterstitialAd;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -175,6 +173,7 @@ public class GameBoard extends Activity {
     private void addBoardToArray(ArrayList<ToggleButton> array, String boardId) {
         int id = getResources().getIdentifier(boardId, "id", getPackageName());
         View board = findViewById(id);
+
         for (int index = 0; index < ((ViewGroup) board).getChildCount(); ++index) {
             View row = ((ViewGroup) board).getChildAt(index);
 
