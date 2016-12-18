@@ -20,6 +20,7 @@
             android:layout_weight="0.05" />
         <ImageView
             android:id="@+id/logo"
+            android:contentDescription="@string/logoDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"

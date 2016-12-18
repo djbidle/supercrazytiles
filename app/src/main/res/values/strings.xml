@@ -10,4 +10,5 @@
     <string name="newGameLabel">New Game</string>
     <string name="scoreLabel">Score: </string>
     <string name="zero">0</string>
+    <string name="logoDescription">Crazy Blocks Logo</string>
 </resources>
