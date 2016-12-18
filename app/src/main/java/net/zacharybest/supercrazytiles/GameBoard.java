@@ -100,8 +100,8 @@ public class GameBoard extends Activity {
     }
 
     @Override
-    public void onPause(){
-        super.onPause();
+    public void onStop(){
+        super.onStop();
         ArrayList<Boolean> computerBoard = populateBooleanArrayList(computerButtons);
         ArrayList<Boolean> playerBoard = populateBooleanArrayList(playerButtons);
         stats.saveGame(computerBoard, playerBoard, this);
