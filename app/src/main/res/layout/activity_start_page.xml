@@ -59,7 +59,7 @@
                     android:textSize="@dimen/activity_text_size"
                     android:textColor="@color/start_page_text_color"
                     android:textStyle="bold"
-                    android:text="New Game"
+                    android:text="@string/newGameLabel"
                     android:onClick="newGame"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
@@ -95,7 +95,7 @@
                     android:textSize="@dimen/activity_text_size"
                     android:textColor="@color/start_page_text_color"
                     android:textStyle="bold"
-                    android:text="Continue"
+                    android:text="@string/continueLabel"
                     android:onClick="continueGame"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp" />

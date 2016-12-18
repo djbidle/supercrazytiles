@@ -26,7 +26,7 @@
                 android:textStyle="bold"
                 android:layout_marginRight="3dp"
                 android:layout_marginEnd="3dp"
-                android:text="Score: "
+                android:text="@string/scoreLabel"
                 android:layout_marginTop="2dp" />
             <TextView
                 android:id="@+id/score"
@@ -37,7 +37,7 @@
                 android:textStyle="bold"
                 android:layout_marginRight="3dp"
                 android:layout_marginEnd="3dp"
-                android:text="0"
+                android:text="@string/zero"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
         <LinearLayout
@@ -104,7 +104,7 @@
                         android:textStyle="bold"
                         android:layout_marginRight="3dp"
                         android:layout_marginEnd="3dp"
-                        android:text="Lives:" />
+                        android:text="@string/livesLabel" />
 
                     <TextView
                         android:id="@+id/lives"
@@ -113,7 +113,7 @@
                         android:textSize="@dimen/activity_text_size"
                         android:textColor="@color/game_play_text_color"
                         android:textStyle="bold"
-                        android:text="0" />
+                        android:text="@string/zero" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,7 +131,7 @@
                         android:textStyle="bold"
                         android:layout_marginRight="3dp"
                         android:layout_marginEnd="3dp"
-                        android:text="Level:" />
+                        android:text="@string/levelLabel" />
 
                     <TextView
                         android:id="@+id/diffLevel"
@@ -140,7 +140,7 @@
                         android:textSize="@dimen/activity_text_size"
                         android:textColor="@color/game_play_text_color"
                         android:textStyle="bold"
-                        android:text="0" />
+                        android:text="@string/zero" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -158,7 +158,7 @@
                         android:textStyle="bold"
                         android:layout_marginRight="3dp"
                         android:layout_marginEnd="3dp"
-                        android:text="Moves:" />
+                        android:text="@string/movesLabel" />
 
                     <TextView
                         android:id="@+id/movesLeft"
@@ -167,7 +167,7 @@
                         android:textSize="@dimen/activity_text_size"
                         android:textColor="@color/game_play_text_color"
                         android:textStyle="bold"
-                        android:text="0" />
+                        android:text="@string/zero" />
                 </LinearLayout>
 
             </LinearLayout>
