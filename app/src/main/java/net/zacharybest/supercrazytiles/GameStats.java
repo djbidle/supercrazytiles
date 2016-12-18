@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * This class tracks all of the important game metrics
  */
 
-public class GameStats implements Serializable{
+class GameStats implements Serializable{
 
 
     private int difficulty = 1;     //the difficulty rating of the computer puzzle
@@ -45,14 +45,6 @@ public class GameStats implements Serializable{
 
     }
 
-    public void addGameOutcome(boolean outcome){
-        if (outcome){
-            handleWin();
-        } else {
-            handleLoss();
-        }
-    }
-
     public int handleWin(){
         this.winIndex++;
         int scoreToAdd = this.difficulty * 100;
@@ -75,10 +67,6 @@ public class GameStats implements Serializable{
         return difficulty;
     }
 
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
-
     public int getLives() {
         return lives;
     }
@@ -95,7 +83,7 @@ public class GameStats implements Serializable{
         return score;
     }
 
-    public void addScore(int score){
+    private void addScore(int score){
         this.score += score;
     }
 
