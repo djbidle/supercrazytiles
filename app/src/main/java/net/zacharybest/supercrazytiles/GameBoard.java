@@ -1,9 +1,9 @@
 package net.zacharybest.supercrazytiles;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -315,12 +315,14 @@ public class GameBoard extends Activity {
         newGame();
     }
 
+    @SuppressLint("Internationalization")
     private void animateTextCounter(int startingValue, int finalValue, final TextView  textView, final String textLead){
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(startingValue, finalValue);
         valueAnimator.setDuration(2000);
 
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
 
