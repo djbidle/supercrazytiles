@@ -47,10 +47,10 @@ public class GameBoard extends Activity {
 
         boardWidth = getBoardWidth();
 
-        computerButtons = new ArrayList<ToggleButton>();
+        computerButtons = new ArrayList<>();
         addBoardToArray(computerButtons, "computer_board");
 
-        playerButtons = new ArrayList<ToggleButton>();
+        playerButtons = new ArrayList<>();
         addBoardToArray(playerButtons, "player_board");
 
     }
@@ -62,9 +62,7 @@ public class GameBoard extends Activity {
 
         try {
             stats = loadSave();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -110,7 +108,7 @@ public class GameBoard extends Activity {
     }
 
     private ArrayList<Boolean> populateBooleanArrayList(ArrayList<ToggleButton> arrayList){
-        ArrayList<Boolean> output = new ArrayList<Boolean>();
+        ArrayList<Boolean> output = new ArrayList<>();
         for (ToggleButton btn : arrayList){
             output.add(btn.isChecked());
         }
@@ -230,6 +228,8 @@ public class GameBoard extends Activity {
      */
     private void setComputerBoard() {
         Random rng = new Random();
+
+        //noinspection unchecked
         ArrayList<ToggleButton> clonedButtons = (ArrayList<ToggleButton>) computerButtons.clone();
         int min = 0;
         for (int i = 0; i < stats.getDifficulty(); i++) {
