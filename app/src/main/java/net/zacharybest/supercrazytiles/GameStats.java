@@ -1,5 +1,7 @@
 package net.zacharybest.supercrazytiles;
 
+import android.content.Context;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,14 +27,14 @@ public class GameStats implements Serializable{
     private ArrayList<Boolean> playerBoard;
 
 
-    public void saveGame(ArrayList<Boolean> computerBoard, ArrayList<Boolean> playerBoard){
+    public void saveGame(ArrayList<Boolean> computerBoard, ArrayList<Boolean> playerBoard, Context context){
         this.computerBoard = computerBoard;
         this.playerBoard = playerBoard;
 
         try {
             ObjectOutputStream oos = new ObjectOutputStream(
                     new FileOutputStream(
-                            new File("/data/data/net.zacharybest.supercrazytiles/saved_state.bin")
+                            new File(context.getFilesDir().getPath() + context.getString(R.string.save_file))
                     )
             );
             oos.writeObject(this);

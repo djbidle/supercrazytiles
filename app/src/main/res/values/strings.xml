@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Crazy Blocks</string>
+    <string name="save_file">net.zacharybest.supercrazytiles/saved_state.bin</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="interstitial_ad_unit_id">"ca-app-pub-3940256099942544/1033173712"</string>
 </resources>

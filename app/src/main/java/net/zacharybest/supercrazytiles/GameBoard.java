@@ -3,6 +3,7 @@ package net.zacharybest.supercrazytiles;
 import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -75,7 +76,7 @@ public class GameBoard extends Activity {
 
     private GameStats loadSave() throws IOException, ClassNotFoundException{
         ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream("/data/data/net.zacharybest.supercrazytiles/saved_state.bin")
+                new FileInputStream(getFilesDir().getPath() + getString(R.string.save_file))
         );
         return (GameStats) ois.readObject();
     }
@@ -105,7 +106,7 @@ public class GameBoard extends Activity {
         super.onPause();
         ArrayList<Boolean> computerBoard = populateBooleanArrayList(computerButtons);
         ArrayList<Boolean> playerBoard = populateBooleanArrayList(playerButtons);
-        stats.saveGame(computerBoard, playerBoard);
+        stats.saveGame(computerBoard, playerBoard, this);
     }
 
     private ArrayList<Boolean> populateBooleanArrayList(ArrayList<ToggleButton> arrayList){

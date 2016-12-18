@@ -30,7 +30,7 @@ public class StartPage extends AppCompatActivity {
         //TODO replace with real app id
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
 
-        save = new File("/data/data/net.zacharybest.supercrazytiles/saved_state.bin");
+        save = new File(getFilesDir().getPath() + getString(R.string.save_file));
         if (save.exists()){
             Button btn = (Button) findViewById(R.id.continueButton);
             btn.setClickable(true);
