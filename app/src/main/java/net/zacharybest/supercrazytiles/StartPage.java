@@ -56,11 +56,14 @@ public class StartPage extends AppCompatActivity {
     }
 
     public void newGame(View view) {
+        //noinspection ResultOfMethodCallIgnored
         save.delete();
         continueGame(view);
     }
 
-    public void continueGame(View view){
+    //onclick action
+    @SuppressWarnings("WeakerAccess")
+    public void continueGame(@SuppressWarnings("UnusedParameters") View view){
         Intent intent = new Intent(this, GameBoard.class);
         Bundle bundle = new Bundle();
         bundle.putInt("boardId", R.layout.activity_game_board);
