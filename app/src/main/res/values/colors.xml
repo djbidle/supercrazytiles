@@ -3,8 +3,6 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="gameBoardAccent">#ECEFF1</color>
-    <color name="gameBoardPrimary">#1A237E</color>
     <color name="start_page_text_color">#707070</color>
     <color name="game_play_text_color">#998100</color>
     <color name="scoreDisplay_text_color">#FF0000</color>
