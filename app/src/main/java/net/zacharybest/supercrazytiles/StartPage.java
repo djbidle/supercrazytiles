@@ -27,6 +27,7 @@ public class StartPage extends AppCompatActivity {
 
         setContentView(R.layout.activity_start_page);
 
+        //TODO replace with real app id
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
 
         save = new File("/data/data/net.zacharybest.supercrazytiles/saved_state.bin");
