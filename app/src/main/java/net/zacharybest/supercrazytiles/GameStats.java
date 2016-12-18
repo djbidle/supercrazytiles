@@ -19,7 +19,6 @@ public class GameStats implements Serializable{
     private int difficulty = 1;     //the difficulty rating of the computer puzzle
     private int lives = 3;          //the number of failed attempts allowed
     private int turns = difficulty; //the exact number of turns the user must take to complete a level
-    private int winThreshold = 3;   //number of wins needed to increase difficulty
     private int winIndex = 0;       //tracks number of wins needed for increasing difficulty
     private int score = 0;          //the player's score
 
@@ -58,6 +57,7 @@ public class GameStats implements Serializable{
         this.winIndex++;
         int scoreToAdd = this.difficulty * 100;
         addScore(scoreToAdd);
+        int winThreshold = 3;
         if (winIndex % winThreshold == 0 && difficulty < 9){
             difficulty++;
             winIndex = 0;
