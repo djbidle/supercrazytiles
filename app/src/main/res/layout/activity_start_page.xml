@@ -22,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="3.5"
-        android:padding="32dp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -55,6 +54,7 @@
             android:onClick="continueGame"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp" />
+
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView
@@ -65,4 +65,5 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_ad_unit_id">
     </com.google.android.gms.ads.AdView>
+
 </LinearLayout>
