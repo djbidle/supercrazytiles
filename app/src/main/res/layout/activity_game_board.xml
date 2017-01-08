@@ -7,6 +7,7 @@
     android:padding="@dimen/activity_horizontal_margin"
     tools:context="net.zacharybest.supercrazytiles.GameBoard"
     android:background="@drawable/graybackground">
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,17 +61,174 @@
                 android:layout_marginTop="2dp" />
         </LinearLayout>
     </FrameLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingBottom="16dp"
-        android:layout_weight="1">
+
+    <!-- computer board layout -->
+    <LinearLayout
+            android:id="@+id/computer_board"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+                <ToggleButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    style="@style/toggleButton"
+                    android:background="@drawable/ic_toggle_bg"
+                    android:clickable="false"/>
+            </LinearLayout>
+        </LinearLayout>
+        <!-- end of computer board layout -->
 
         <FrameLayout
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:background="@drawable/gold">
             <LinearLayout
                 android:baselineAligned="false"
@@ -164,175 +322,15 @@
                         android:textStyle="bold"
                         android:text="@string/zero" />
                 </LinearLayout>
-
             </LinearLayout>
         </FrameLayout>
-        <LinearLayout
-            android:id="@+id/computer_board"
-            android:layout_above="@id/info"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-                <ToggleButton
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="1dp"
-                    android:layout_weight="1"
-                    style="@style/toggleButton"
-                    android:background="@drawable/ic_toggle_bg"
-                    android:clickable="false"/>
-            </LinearLayout>
-        </LinearLayout>
-
+        <!-- player board layout -->
         <LinearLayout
             android:id="@+id/player_board"
-            android:layout_below="@id/info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:orientation="vertical">
 
             <LinearLayout
@@ -492,5 +490,5 @@
                     android:background="@drawable/ic_toggle_bg" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+        <!-- end of player board layout -->
 </LinearLayout>
