@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Crazy Blocks</string>
     <string name="save_file">saved_state.bin</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id">"ca-app-pub-3940256099942544/1033173712"</string>
+    <string name="banner_ad_unit_id">ca-app-pub-9912906347455873/6164281748</string>
+    <string name="interstitial_ad_unit_id">"ca-app-pub-9912906347455873/7641014949"</string>
     <string name="movesLabel">Moves:</string>
     <string name="levelLabel">Level:</string>
     <string name="livesLabel">Lives:</string>

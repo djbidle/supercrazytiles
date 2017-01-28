@@ -27,8 +27,7 @@ public class StartPage extends AppCompatActivity {
 
         setContentView(R.layout.activity_start_page);
 
-        //TODO replace with real app id
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-9912906347455873~4687548548");
 
         save = new File(getFilesDir().getPath() + getString(R.string.save_file));
         if (save.exists()){
@@ -42,16 +41,7 @@ public class StartPage extends AppCompatActivity {
 
     private void loadBannerAd(){
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        /* ONLY WHEN LIVE!!!!!!!!
-        * DO NOT UNCOMMENT!!!!!
-        * DO NOT REMOVE!!!!!!!!!!!
         AdRequest adRequest = new AdRequest.Builder().build();
-        */
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("")
-                .build();
-
         mAdView.loadAd(adRequest);
     }
 

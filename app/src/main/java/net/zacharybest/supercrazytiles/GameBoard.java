@@ -82,7 +82,6 @@ public class GameBoard extends Activity {
     private void requestAd(){
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
-
         mInterstitialAd.setAdListener(new AdListener() {
 
             @Override
@@ -90,12 +89,7 @@ public class GameBoard extends Activity {
                 mInterstitialAd.show();
             }
         });
-
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("")
-                .build();
-
+        AdRequest adRequest = new AdRequest.Builder().build();
         mInterstitialAd.loadAd(adRequest);
     }
 
