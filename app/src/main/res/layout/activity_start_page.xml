@@ -41,6 +41,20 @@
             android:layout_marginBottom="10dp" />
 
         <Button
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/landing_page_button_selector"
+            android:textSize="@dimen/activity_text_size"
+            android:textColor="@color/start_page_text_color"
+            android:textStyle="bold"
+            android:text="@string/newUnlimitedGameLabel"
+            android:onClick="newUnlimitedGame"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
             android:id="@+id/continueButton"
             android:textAlignment="center"
             android:layout_gravity="center"

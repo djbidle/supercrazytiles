@@ -13,9 +13,6 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -42,6 +39,8 @@ public class GameBoard extends Activity {
         Bundle bundle = getIntent().getExtras();
         setContentView(bundle.getInt("boardId"));
 
+        stats = (GameStats) getIntent().getParcelableExtra("game_stats");
+
         scoreView = (TextView) findViewById(R.id.score);
         scoreAdd = (TextView) findViewById(R.id.addScoreDisplay);
 
@@ -59,24 +58,7 @@ public class GameBoard extends Activity {
     public void onStart(){
         super.onStart();
         requestAd();
-
-        try {
-            stats = loadSave();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        if (stats == null) {
-            stats = new GameStats();
-        }
         newGame();
-    }
-
-    private GameStats loadSave() throws IOException, ClassNotFoundException{
-        ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream(getFilesDir().getPath() + getString(R.string.save_file))
-        );
-        return (GameStats) ois.readObject();
     }
 
     private void requestAd(){
@@ -184,9 +166,17 @@ public class GameBoard extends Activity {
      * updates a GUI component with the current stat value
      * @param id the R.id of the resource to be updated.
      */
-    private void updateStat(int id, int value){
+    private void updateStat(int id, String value){
         TextView tv = (TextView) findViewById(id);
         tv.setText(String.valueOf(value));
+    }
+
+    /**
+     * updates a GUI component with the current stat value
+     * @param id the R.id of the resource to be updated.
+     */
+    private void updateStat(int id, int value){
+        updateStat(id, String.valueOf(value));
     }
 
     /**
@@ -204,7 +194,7 @@ public class GameBoard extends Activity {
     }
 
     private void updateLives(){
-        updateStat(R.id.lives, stats.getLives());
+        updateStat(R.id.lives, stats.getLivesString());
     }
 
     private void updateDifficulty(){
