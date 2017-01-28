@@ -2,7 +2,6 @@ package net.zacharybest.supercrazytiles;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -74,7 +73,7 @@ public class StartPage extends AppCompatActivity {
         }
     }
 
-    private void startGame(Parcelable gameStats){
+    private void startGame(GameStats gameStats){
         Intent intent = new Intent(this, GameBoard.class);
         intent.putExtra("game_stats", gameStats);
         Bundle bundle = new Bundle();

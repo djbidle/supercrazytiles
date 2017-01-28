@@ -39,7 +39,7 @@ public class GameBoard extends Activity {
         Bundle bundle = getIntent().getExtras();
         setContentView(bundle.getInt("boardId"));
 
-        stats = (GameStats) getIntent().getParcelableExtra("game_stats");
+        stats = (GameStats) getIntent().getSerializableExtra("game_stats");
 
         scoreView = (TextView) findViewById(R.id.score);
         scoreAdd = (TextView) findViewById(R.id.addScoreDisplay);

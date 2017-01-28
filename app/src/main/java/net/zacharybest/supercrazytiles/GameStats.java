@@ -1,8 +1,6 @@
 package net.zacharybest.supercrazytiles;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 
 import java.io.File;
@@ -16,7 +14,7 @@ import java.util.ArrayList;
  * This class tracks all of the important game metrics
  */
 
-class GameStats implements Serializable, Parcelable{
+class GameStats implements Serializable {
 
 
     protected int difficulty = 1;     //the difficulty rating of the computer puzzle
@@ -105,24 +103,4 @@ class GameStats implements Serializable, Parcelable{
         computerBoard = null;
         playerBoard = null;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeSerializable(this);
-    }
-
-    public static final Parcelable.Creator<GameStats> CREATOR = new Parcelable.Creator<GameStats>() {
-        public GameStats createFromParcel(Parcel in) {
-            return (GameStats) in.readSerializable();
-        }
-
-        public GameStats[] newArray(int size) {
-            return new GameStats[size];
-        }
-    };
 }
