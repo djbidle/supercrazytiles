@@ -329,7 +329,7 @@ public class GameBoard extends Activity {
      ****/
     private void showPatternCompleteDialog(){
         Dialog dialog = new Dialog(this,  R.style.NewDialog);
-        dialog.setContentView(R.layout.game_dialog_pattern_matched);
+        dialog.setContentView(R.layout.game_dialog_success_pattern_matched);
         dialog.show();
     }
 

@@ -12,4 +12,7 @@
     <string name="scoreLabel">Score: </string>
     <string name="zero">0</string>
     <string name="logoDescription">Crazy Blocks Logo</string>
+    <string name="failMatch">You have failed to match the pattern</string>
+    <string name="successMatch">You have successfully matched the pattern</string>
+    <string name="levelUp">You have leveled up</string>
 </resources>
