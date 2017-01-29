@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_start_top_padding">12dp</dimen>
+    <dimen name="activity_start_left_padding">24dp</dimen>
+    <dimen name="activity_start_right_padding">24dp</dimen>
+    <dimen name="activity_start_button_top_margin">5dp</dimen>
+    <dimen name="activity_start_button_bottom_margin">5dp</dimen>
     <dimen name="activity_text_size">18sp</dimen>
 </resources>

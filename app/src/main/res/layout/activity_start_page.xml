@@ -4,9 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="24dp"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
+    android:paddingTop="@dimen/activity_start_top_padding"
     android:background="@drawable/background">
 
     <ImageView
@@ -21,7 +19,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3.5"
+        android:paddingLeft="@dimen/activity_start_left_padding"
+        android:paddingRight="@dimen/activity_start_right_padding"
+        android:layout_weight="3"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -37,8 +37,8 @@
             android:text="@string/newGameLabel"
             android:onClick="newGame"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="@dimen/activity_start_button_top_margin"
+            android:layout_marginBottom="@dimen/activity_start_button_bottom_margin" />
 
         <Button
             android:textAlignment="center"
@@ -51,8 +51,8 @@
             android:text="@string/newUnlimitedGameLabel"
             android:onClick="newUnlimitedGame"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="@dimen/activity_start_button_top_margin"
+            android:layout_marginBottom="@dimen/activity_start_button_bottom_margin" />
 
         <Button
             android:id="@+id/continueButton"
@@ -66,8 +66,8 @@
             android:textStyle="bold"
             android:text="@string/continueLabel"
             android:onClick="continueGame"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="@dimen/activity_start_button_top_margin"
+            android:layout_marginBottom="@dimen/activity_start_button_bottom_margin" />
 
     </LinearLayout>
 
