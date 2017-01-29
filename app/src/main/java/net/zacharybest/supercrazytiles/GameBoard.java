@@ -3,6 +3,7 @@ package net.zacharybest.supercrazytiles;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,8 @@ public class GameBoard extends Activity {
         super.onStart();
         requestAd();
         newGame();
+        showPatternCompleteDialog(); //added for testing purposes. Needs to be removed
+
     }
 
     private void requestAd(){
@@ -291,6 +294,7 @@ public class GameBoard extends Activity {
                 }
                 return;
             }
+
         }
 
         int currentScore = stats.getScore();
@@ -317,6 +321,16 @@ public class GameBoard extends Activity {
             }
         });
         valueAnimator.start();
+    }
+
+    /****
+     * Add following method to test dialog layouts. May need to combine these into one??
+     *
+     ****/
+    private void showPatternCompleteDialog(){
+        Dialog dialog = new Dialog(this,  R.style.NewDialog);
+        dialog.setContentView(R.layout.game_dialog_pattern_matched);
+        dialog.show();
     }
 
 }
