@@ -4,7 +4,9 @@ import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -60,8 +62,6 @@ public class GameBoard extends Activity {
         super.onStart();
         requestAd();
         newGame();
-        showPatternCompleteDialog(); //added for testing purposes. Needs to be removed
-
     }
 
     private void requestAd(){
@@ -284,7 +284,7 @@ public class GameBoard extends Activity {
             boolean playerButtonState = playerButtons.get(i).isChecked();
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
-                //Toast.makeText(this, "You Lose...", Toast.LENGTH_SHORT).show();
+                splashTransitionDialog(R.layout.game_dialog_fail_pattern_matched);
                 stats.handleLoss();
                 if ( stats.getLives() > 0) {
                     tryAgain();
@@ -298,8 +298,15 @@ public class GameBoard extends Activity {
         }
 
         int currentScore = stats.getScore();
+        int currentDifficulty = stats.getDifficulty();
         animateTextCounter(stats.handleWin(), 0, scoreAdd, "+");
         animateTextCounter(currentScore, stats.getScore(), scoreView, "");
+        int postWinDifficulty = stats.getDifficulty();
+        if (currentDifficulty == postWinDifficulty) {
+            splashTransitionDialog(R.layout.game_dialog_success_pattern_matched);
+        } else {
+            splashTransitionDialog(R.layout.game_dialog_level_up);
+        }
         newGame();
     }
 
@@ -323,14 +330,43 @@ public class GameBoard extends Activity {
         valueAnimator.start();
     }
 
-    /****
-     * Add following method to test dialog layouts. May need to combine these into one??
-     *
-     ****/
-    private void showPatternCompleteDialog(){
-        Dialog dialog = new Dialog(this,  R.style.NewDialog);
-        dialog.setContentView(R.layout.game_dialog_success_pattern_matched);
+    /**
+     * Shows the specified dialog for the default amount of time
+     * @param dialogLayout the dialog to show
+     */
+    private void splashTransitionDialog(int dialogLayout){
+        splashTransitionDialog(dialogLayout, 2000);
+    }
+
+    /**
+     * Shows the specified dialog for the number of milliseconds specified
+     * @param dialogLayout layout to be used in the dialog
+     * @param splashDuration duration in milliseconds for which the dialog will be shown
+     */
+    private void splashTransitionDialog(int dialogLayout, int splashDuration){
+        final Dialog dialog = new Dialog(this,  R.style.NewDialog);
+        dialog.setContentView(dialogLayout);
         dialog.show();
+
+        //Hide after splash duration
+        final Handler handler  = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        };
+
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                handler.removeCallbacks(runnable);
+            }
+        });
+
+        handler.postDelayed(runnable, splashDuration);
     }
 
 }
