@@ -22,6 +22,7 @@ class GameStats implements Serializable {
     protected int turns = difficulty; //the exact number of turns the user must take to complete a level
     private int winIndex = 0;       //tracks number of wins needed for increasing difficulty
     private int score = 0;          //the player's score
+    private boolean difficultyIncrease = false; //whether or not a game resulted in a difficulty increase
 
     private ArrayList<Boolean> computerBoard;
     private ArrayList<Boolean> playerBoard;
@@ -54,7 +55,10 @@ class GameStats implements Serializable {
         int winThreshold = 3;
         if (winIndex % winThreshold == 0 && difficulty < 9){
             difficulty++;
+            difficultyIncrease = true;
             winIndex = 0;
+        } else {
+            difficultyIncrease = false;
         }
         turns = difficulty;
         return scoreToAdd;
@@ -63,6 +67,10 @@ class GameStats implements Serializable {
     public void handleLoss(){
         this.lives--;
         turns = difficulty;
+    }
+
+    public boolean hasDifficultyIncreased(){
+        return difficultyIncrease;
     }
 
     public int getDifficulty() {

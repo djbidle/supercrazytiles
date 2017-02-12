@@ -298,14 +298,12 @@ public class GameBoard extends Activity {
         }
 
         int currentScore = stats.getScore();
-        int currentDifficulty = stats.getDifficulty();
         animateTextCounter(stats.handleWin(), 0, scoreAdd, "+");
         animateTextCounter(currentScore, stats.getScore(), scoreView, "");
-        int postWinDifficulty = stats.getDifficulty();
-        if (currentDifficulty == postWinDifficulty) {
-            splashTransitionDialog(R.layout.game_dialog_success_pattern_matched);
-        } else {
+        if (stats.hasDifficultyIncreased()) {
             splashTransitionDialog(R.layout.game_dialog_level_up);
+        } else {
+            splashTransitionDialog(R.layout.game_dialog_success_pattern_matched);
         }
         newGame();
     }
