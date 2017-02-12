@@ -71,6 +71,21 @@
             android:layout_marginTop="@dimen/activity_start_button_top_margin"
             android:layout_marginBottom="@dimen/activity_start_button_bottom_margin" />
 
+        <Button
+            android:id="@+id/tutorialButton"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@drawable/landing_page_button_selector"
+            android:textSize="@dimen/activity_text_size"
+            android:textColor="@color/start_page_text_color"
+            android:textStyle="bold"
+            android:text="@string/tutorialLabel"
+            android:onClick="tutorial"
+            android:layout_marginTop="@dimen/activity_start_button_top_margin"
+            android:layout_marginBottom="@dimen/activity_start_button_bottom_margin" />
+
     </LinearLayout>
 
     <com.google.android.gms.ads.AdView
