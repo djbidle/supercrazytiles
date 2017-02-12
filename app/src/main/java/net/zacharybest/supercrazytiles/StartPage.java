@@ -73,6 +73,11 @@ public class StartPage extends AppCompatActivity {
         }
     }
 
+    public void openTutorial(View view){
+        Intent intent = new Intent(this, DisplayTutorialActivity.class);
+        startActivity(intent);
+    }
+
     private void startGame(GameStats gameStats){
         Intent intent = new Intent(this, GameBoard.class);
         intent.putExtra("game_stats", gameStats);

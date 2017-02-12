@@ -98,7 +98,7 @@
                 android:textColor="@color/start_page_text_color"
                 android:textStyle="bold"
                 android:text="@string/tutorialLabel"
-                android:onClick="tutorial"
+                android:onClick="openTutorial"
                 android:paddingTop="@dimen/activity_start_button_top_padding"
                 android:paddingBottom="@dimen/activity_start_button_bottom_padding"
                 android:layout_marginTop="@dimen/activity_start_button_top_margin"
