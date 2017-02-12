@@ -16,4 +16,24 @@
     <string name="successMatch">You have successfully matched the pattern</string>
     <string name="levelUp">You have leveled up</string>
     <string name="tutorialLabel">Tutorial</string>
+    <string name="tutorialText">At the top of the\n
+                                screen you’ll see a\n
+                                pattern that you must\n
+                                match to the lower\n
+                                part of your screen.\n
+                                \n
+                                You can match the pattern\n
+                                by touching one or more\n
+                                of the blue squares on the\n
+                                lower half.\n
+                                \n
+                                Each square you\n
+                                touch will make a\n
+                                plus (+) pattern using\n
+                                the opposite color\n
+                                (blue turns into green,\n
+                                and green turns into\n
+                                blue).\n
+                                \n
+                                Good luck!</string>
 </resources>
