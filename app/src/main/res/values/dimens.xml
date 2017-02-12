@@ -4,7 +4,11 @@
     <dimen name="activity_start_top_padding">24dp</dimen>
     <dimen name="activity_start_left_padding">24dp</dimen>
     <dimen name="activity_start_right_padding">24dp</dimen>
-    <dimen name="activity_start_button_top_margin">10dp</dimen>
-    <dimen name="activity_start_button_bottom_margin">10dp</dimen>
+    <dimen name="activity_start_button_top_margin">2dp</dimen>
+    <dimen name="activity_start_button_bottom_margin">2dp</dimen>
+    <dimen name="activity_start_button_top_padding">0dp</dimen>
+    <dimen name="activity_start_button_bottom_padding">0dp</dimen>
+    <dimen name="activity_start_button_right_margin">2dp</dimen>
+    <dimen name="activity_start_button_left_margin">2dp</dimen>
     <dimen name="activity_text_size">24sp</dimen>
 </resources>
