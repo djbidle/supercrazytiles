@@ -333,7 +333,7 @@ public class GameBoard extends Activity {
      * @param dialogLayout the dialog to show
      */
     private void splashTransitionDialog(int dialogLayout){
-        splashTransitionDialog(dialogLayout, 2000);
+        splashTransitionDialog(dialogLayout, 1000);
     }
 
     /**
