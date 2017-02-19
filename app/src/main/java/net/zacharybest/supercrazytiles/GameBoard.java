@@ -284,13 +284,12 @@ public class GameBoard extends Activity {
             boolean playerButtonState = playerButtons.get(i).isChecked();
             boolean computerButtonState = computerButtons.get(i).isChecked();
             if (playerButtonState != computerButtonState) {
-                splashTransitionDialog(R.layout.game_dialog_fail_pattern_matched);
                 stats.handleLoss();
                 if ( stats.getLives() > 0) {
-                    tryAgain();
+                    transition(R.layout.game_dialog_fail_pattern_matched, false);
                 } else {
                     stats = new GameStats();
-                    newGame();
+                    transition(R.layout.game_dialog_fail_pattern_matched);
                 }
                 return;
             }
@@ -301,11 +300,10 @@ public class GameBoard extends Activity {
         animateTextCounter(stats.handleWin(), 0, scoreAdd, "+");
         animateTextCounter(currentScore, stats.getScore(), scoreView, "");
         if (stats.hasDifficultyIncreased()) {
-            splashTransitionDialog(R.layout.game_dialog_level_up);
+            transition(R.layout.game_dialog_level_up);
         } else {
-            splashTransitionDialog(R.layout.game_dialog_success_pattern_matched);
+            transition(R.layout.game_dialog_success_pattern_matched);
         }
-        newGame();
     }
 
     @SuppressLint("Internationalization")
@@ -330,10 +328,20 @@ public class GameBoard extends Activity {
 
     /**
      * Shows the specified dialog for the default amount of time
+     * A new game will start after the dialog is dismissed
      * @param dialogLayout the dialog to show
      */
-    private void splashTransitionDialog(int dialogLayout){
-        splashTransitionDialog(dialogLayout, 1000);
+    private void transition(int dialogLayout){
+        transition(dialogLayout, 1000, true);
+    }
+
+    /**
+     * Shows the specifed dialog for the default amount of time
+     * @param dialogLayout the dialog to show
+     * @param newGame whether or not a new game should start
+     */
+    private void transition(int dialogLayout, boolean newGame){
+        transition(dialogLayout, 1000, newGame);
     }
 
     /**
@@ -341,7 +349,7 @@ public class GameBoard extends Activity {
      * @param dialogLayout layout to be used in the dialog
      * @param splashDuration duration in milliseconds for which the dialog will be shown
      */
-    private void splashTransitionDialog(int dialogLayout, int splashDuration){
+    private void transition(int dialogLayout, int splashDuration, final boolean newGame){
         final Dialog dialog = new Dialog(this,  R.style.NewDialog);
         dialog.setContentView(dialogLayout);
         dialog.show();
@@ -353,6 +361,11 @@ public class GameBoard extends Activity {
             public void run() {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
+                    if (newGame) {
+                        newGame();
+                    } else {
+                        resetBoard(playerButtons);
+                    }
                 }
             }
         };
