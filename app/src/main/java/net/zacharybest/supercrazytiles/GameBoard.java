@@ -364,7 +364,7 @@ public class GameBoard extends Activity {
                     if (newGame) {
                         newGame();
                     } else {
-                        resetBoard(playerButtons);
+                        tryAgain();
                     }
                 }
             }
