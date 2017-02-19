@@ -4,13 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/tutorial_welcome">
+    android:background="@drawable/tutorial_page_one">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/tutorialWelcome"
+        android:text="@string/tutorialTwo"
         android:background="@drawable/tutorial_text_background"
         android:textColor="@color/black"
         android:textSize="@dimen/activity_text_size"
