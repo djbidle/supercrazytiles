@@ -12,7 +12,8 @@
         android:layout_gravity="center"
         android:text="@string/tutorialWelcome"
         android:background="@drawable/tutorial_text_background"
-        android:textColor="@color/black"
+        android:alpha="0.70"
+        android:textColor="@color/white"
         android:textSize="@dimen/activity_text_size"
         android:layout_marginTop="125dp"
         />

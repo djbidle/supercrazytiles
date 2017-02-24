@@ -16,10 +16,10 @@
     <string name="successMatch">You have successfully matched the pattern</string>
     <string name="levelUp">You have leveled up</string>
     <string name="tutorialLabel">Tutorial</string>
-    <string name="tutorialWelcome">Welcome to Crazy Blocks!\nA pattern matching game.</string>
-    <string name="tutorialOne">Use the bottom grid of blocks\nto match the pattern of green\nblocks on the top grid.</string>
-    <string name="tutorialTwo">When you tap a block,\nthat block changes colors.\nThe blocks to the top, bottom,\nleft, and right also change colors</string>
-    <string name="tutorialThree">You have three Lives to\nmatch the pattern, unless\nyou are playing unlimited mode.</string>
+    <string name="tutorialWelcome">Welcome to Crazy Blocks!\nA pattern matching game. \u2023</string>
+    <string name="tutorialOne">Use the bottom grid of blocks\nto match the pattern of green\nblocks on the top grid. \u2023</string>
+    <string name="tutorialTwo">When you tap a block,\nthat block changes colors.\nThe blocks to the top, bottom,\nleft, and right also change colors. \u2023</string>
+    <string name="tutorialThree">You have three Lives to\nmatch the pattern, unless\nyou are playing unlimited mode. \u2023</string>
     <string name="tutorialFour">Match the pattern to level up.</string>
     <string name="tutorialBye">Good Luck!</string>
 </resources>
