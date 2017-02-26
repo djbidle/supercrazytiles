@@ -74,7 +74,7 @@ public class StartPage extends AppCompatActivity {
     }
 
     public void openTutorial(View view){
-        Intent intent = new Intent(this, DisplayTutorialActivity.class);
+        Intent intent = new Intent(this, Tutorial.class);
         startActivity(intent);
     }
 
