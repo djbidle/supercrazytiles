@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -38,7 +39,9 @@ public class GameBoard extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    public void setupActivity(){
         Bundle bundle = getIntent().getExtras();
         setContentView(bundle.getInt("boardId"));
 
@@ -54,14 +57,13 @@ public class GameBoard extends Activity {
 
         playerButtons = new ArrayList<>();
         addBoardToArray(playerButtons, "player_board");
-
     }
 
     @Override
     public void onStart(){
         super.onStart();
+        setContentView(new View(this)); // a blank view
         requestAd();
-        newGame();
     }
 
     private void requestAd(){
@@ -72,6 +74,12 @@ public class GameBoard extends Activity {
             @Override
             public void onAdLoaded(){
                 mInterstitialAd.show();
+            }
+
+            @Override
+            public void onAdClosed(){
+                setupActivity();
+                newGame();
             }
         });
         AdRequest adRequest = new AdRequest.Builder().build();
